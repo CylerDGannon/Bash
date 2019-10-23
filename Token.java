@@ -21,6 +21,20 @@ public class Token {
     public final static byte CMD = 14;
     public final static byte ARG = 15;
 
+    public Token(byte kind, String spelling){
+        this.kind = kind;
+        this.spelling = spelling;
+
+        if(kind == VAR) {
+            for (int k = 0; k <=15; k++) {
+                if(spelling.equals(spellings[k])) {
+                    this.kind = k;
+                    break;
+                }
+            }
+        }
+    }
+
     private final static String[] spellings = {
             "<shell command>", "<literal>", "<variable>", "assign",
             "if", "then", "else", "fi", "for", "in", "do", "od", "<eol>",
